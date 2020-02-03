@@ -63,24 +63,20 @@ const User = () => import('@/views/users/User')
 Vue.use(Router)
 
 export default new Router({
-  mode: 'hash', // https://router.vuejs.org/api/#mode
-  linkActiveClass: 'open active',
   scrollBehavior: () => ({ y: 0 }),
   routes: [
     {
       path: '/',
       name: 'login',
       component: Login,
-      children: [
-        {
-          path: '/forgotPassword',
-          name: 'forgotPassword',
-          component: ForgotPassword
-        }
-      ]
     },
     {
-      path: 'dashboard',
+      path: '/forgotPassword',
+      name: 'forgotPassword',
+      component: ForgotPassword
+    },
+    {
+      path: '/dashboard',
       redirect: '/dashboard',
       name: 'Home',
       component: DefaultContainer,
