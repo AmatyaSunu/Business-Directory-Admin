@@ -8,11 +8,17 @@ const DefaultContainer = () => import('@/containers/DefaultContainer')
 // Views
 const Dashboard = () => import('@/views/Dashboard')
 
+const contactManagement = () => import('@/views/theme/Colors')
+const businessManagement = () => import('@/views/theme/Typography')
+
+const categoriesManagement = () => import('@/views/Charts')
+const userManagement= () => import('@/views/Widgets')
 const Colors = () => import('@/views/theme/Colors')
-const Typography = () => import('@/views/theme/Typography')
+const Topography = () => import('@/views/theme/Typography')
 
 const Charts = () => import('@/views/Charts')
-const Widgets = () => import('@/views/Widgets')
+const Widgets= () => import('@/views/Widgets')
+
 
 // Views - Components
 const Cards = () => import('@/views/base/Cards')
@@ -82,59 +88,31 @@ export default new Router({
       component: DefaultContainer,
       children: [
         {
-          path: 'dashboard',
+          path: '/dashboard',
           name: 'Dashboard',
           component: Dashboard
         },
         {
-          path: 'theme',
-          redirect: '/theme/colors',
-          name: 'Theme',
-          component: {
-            render (c) { return c('router-view') }
-          },
-          children: [
-            {
-              path: 'colors',
-              name: 'Colors',
-              component: Colors
-            },
-            {
-              path: 'typography',
-              name: 'Typography',
-              component: Typography
-            }
-          ]
+          path: 'contactManagement',
+          name: 'contactManagement',
+          component: contactManagement
         },
         {
-          path: 'charts',
-          name: 'Charts',
-          component: Charts
+          path: 'businessManagement',
+          name: 'businessManagement',
+          component: businessManagement
         },
         {
-          path: 'widgets',
-          name: 'Widgets',
-          component: Widgets
+          path: 'categoriesManagement',
+          name: 'categoriesManagement',
+          component: categoriesManagement
         },
         {
-          path: 'users',
-          meta: { label: 'Users'},
-          component: {
-            render (c) { return c('router-view') }
-          },
-          children: [
-            {
-              path: '',
-              component: Users,
-            },
-            {
-              path: ':id',
-              meta: { label: 'User Details'},
-              name: 'User',
-              component: User,
-            },
-          ]
+          path: 'userManagement',
+          name: 'userManagement',
+          component: userManagement
         },
+
         {
           path: 'base',
           redirect: '/base/cards',
@@ -312,37 +290,6 @@ export default new Router({
         }
       ]
     },
-    {
-      path: '/pages',
-      redirect: '/pages/404',
-      name: 'Pages',
-      component: {
-        render (c) { return c('router-view') }
-      },
-      children: [
 
-        {
-          path: '404',
-          name: 'Page404',
-          component: Page404
-        },
-        {
-          path: '500',
-          name: 'Page500',
-          component: Page500
-        },
-        {
-          path: 'login',
-          name: 'login',
-          component: LoginPage
-        },
-        {
-          path: 'register',
-          name: 'Register',
-          component: Register
-        }
-
-      ]
-    }
   ]
 })

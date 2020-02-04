@@ -98,6 +98,7 @@
             "email": email,
             "password": password
           };
+          console.log(dataObject);
           axios.post('http://localhost:7000/api/admin/login', dataObject,
             {
             headers: {
@@ -107,7 +108,7 @@
           .then(response => {
             if(response.data.status === 200) {
               localStorage.setItem('access_token', response.data.accessToken);
-              router.push("/dashboard");
+              router.push("/loadDashboard");
               //this.authToken();
               //alert("success");
             } else{
